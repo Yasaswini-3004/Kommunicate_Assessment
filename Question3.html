@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse a Number</title>
+    <style>
+        #head2{
+            text-align: center;
+            font-size: 25px;
+        }
+    </style>
+    <script type="text/javascript">
+        function reverse_number(){
+            var num = prompt("Enter the number to be reveresed :", " ");
+            document.write('<center>')
+            document.write("<h2>Question-3</h2>");
+            document.write("<h3>The number entered is : " +num);
+            var rev = 0;
+            var a;
+            while (num>0)
+            {
+                a = num % 10;
+                rev = rev * 10 + a ;
+                num = Math.floor(num/10);
+            }
+            alert("The reversed number is : " +rev);
+            document.write("<br><br>The reversed number is : " +rev);
+            document.write('</center>')
+        }
+    </script>
+</head>
+<body onload="reverse_number();"></body>
+</html>
