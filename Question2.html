@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kommunicate</title>
+    <style>  
+        #ques{
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: underline;
+        }   
+        #box-2{
+            height: 220px;
+            width: 500px;
+            margin-left: 32%;
+            margin-right: 3%;
+            margin-top: 3%;
+        }
+        #url-form, #box-2{
+            text-align: center;
+        }
+        #url-input{
+            height: 30px;
+            width: 300px;
+            font-size: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 50px;
+            border: 2px solid black;
+            font-weight: bold;
+            background-color: white;
+            text-align: center;
+        }
+        #param-input{
+            height: 30px;
+            width: 300px;
+            font-size: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 50px;
+            border: 2px solid black;
+            font-weight: bold;
+            background-color: white;
+            text-align: center;
+            margin-top: 1%;
+        }
+        #url-submit{
+            height: 36px;
+            width: 100px;
+            font-size: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 50px;
+            border: 2px solid black;
+            color: black;
+            font-weight: bold;
+            margin-top: 3%;
+        }
+        #url-submit:hover{
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function submits(){
+            var url = document.getElementById("url-input").value;
+            var parameter = document.getElementById("param-input").value; 
+            getParams(url, parameter);
+            return false;
+        }
+
+        function getParams(url, parameter){
+            let flag = 0;
+            let paramString = url.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            for(let pair of queryString.entries()) {
+                if (pair[0] == parameter){
+                    flag = 1;
+                    alert(pair[0] + ": " + pair[1] + "\n")
+                }
+            }
+            if (flag == 0){
+                alert("No such parameter exists");
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="box-2" >
+        <p id="ques">Question - 2</p>
+        <form id="url-form" onsubmit="return submits()" autocomplete="off">
+            <input type="url" placeholder="Enter any URL"  required id="url-input"/> <br>
+            <input type="text" placeholder="Enter any Parameter"  required id="param-input"/> <br>
+            <button type="submit" id = "url-submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
